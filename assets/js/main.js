@@ -25,24 +25,29 @@ const navLinks = document.querySelector('.nav-links');
 body.classList.add('page-ready');
 
 const initPreloader = () => {
-  const preloader = document.createElement('div');
-  preloader.className = 'site-preloader';
-  preloader.setAttribute('aria-hidden', 'true');
-  preloader.innerHTML = `
-    <div class="preloader-core">
-      <div class="preloader-rings" aria-hidden="true">
-        <span class="preloader-ring"></span>
-        <span class="preloader-ring ring-alt"></span>
-      </div>
-      <p class="preloader-label">Auto Lens</p>
-    </div>
-  `;
+  let preloader = document.querySelector('.site-preloader');
+  const minVisibleMs = 550;
 
-  body.appendChild(preloader);
+  if (!preloader) {
+    preloader = document.createElement('div');
+    preloader.className = 'site-preloader';
+    preloader.setAttribute('aria-hidden', 'true');
+    preloader.innerHTML = `
+      <div class="preloader-core">
+        <div class="preloader-rings" aria-hidden="true">
+          <span class="preloader-ring"></span>
+          <span class="preloader-ring ring-alt"></span>
+        </div>
+        <p class="preloader-label">Auto Lens</p>
+      </div>
+    `;
+    body.appendChild(preloader);
+  }
+
+  // Lock scrolling while preloader is present
   body.classList.add('preloader-lock');
 
   const startedAt = performance.now();
-  const minVisibleMs = 550;
 
   const hidePreloader = () => {
     const elapsed = performance.now() - startedAt;
@@ -51,16 +56,18 @@ const initPreloader = () => {
     window.setTimeout(() => {
       preloader.classList.add('is-hiding');
       window.setTimeout(() => {
-        preloader.remove();
+        if (preloader && preloader.parentNode) preloader.parentNode.removeChild(preloader);
         body.classList.remove('preloader-lock');
       }, 420);
     }, wait);
   };
 
   if (document.readyState === 'complete') {
+    // If the page already loaded, still show the preloader for a minimal time
     hidePreloader();
   } else {
     window.addEventListener('load', hidePreloader, { once: true });
+    // Fallback to remove after 3s in case load doesn't fire
     window.setTimeout(hidePreloader, 3000);
   }
 };
