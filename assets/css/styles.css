@@ -554,11 +554,13 @@ h2 {
 }
 
 .inner-page-header[data-page="portfolio"] + .section .gallery-item.is-hidden {
-  display: block;
+  display: none;
 }
 
 .inner-page-header[data-page="portfolio"] + .section [data-gallery-more] {
-  display: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .gallery-open {

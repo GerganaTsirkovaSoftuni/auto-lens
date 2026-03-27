@@ -121,22 +121,39 @@ if ('IntersectionObserver' in window && revealItems.length > 0) {
 }
 
 const gallery = document.querySelector('[data-gallery]');
+
 const galleryMoreButton = document.querySelector('[data-gallery-more]');
 
-if (gallery) {
-  const hiddenItems = () => Array.from(gallery.querySelectorAll('.gallery-item.is-hidden'));
+if (gallery && galleryMoreButton) {
+  const items = Array.from(gallery.querySelectorAll('.gallery-item'));
+  const PAGE_SIZE = 8;
+  let currentIndex = PAGE_SIZE;
 
-  if (galleryMoreButton) {
-    galleryMoreButton.addEventListener('click', () => {
-      hiddenItems().slice(0, 4).forEach((item) => {
+  function updateGallery() {
+    items.forEach((item, idx) => {
+      if (idx < currentIndex) {
         item.classList.remove('is-hidden');
-      });
-
-      if (hiddenItems().length === 0) {
-        galleryMoreButton.style.display = 'none';
+      } else {
+        item.classList.add('is-hidden');
       }
     });
+    // Show the button only if there are more images to show
+    if (currentIndex >= items.length) {
+      galleryMoreButton.style.display = 'none';
+    } else {
+      galleryMoreButton.style.display = '';
+    }
   }
+
+  function showNextPage() {
+    currentIndex += PAGE_SIZE;
+    updateGallery();
+  }
+
+  // Initial state: ensure correct visibility and button state
+  updateGallery();
+
+  galleryMoreButton.addEventListener('click', showNextPage);
 
   const lightbox = document.querySelector('[data-lightbox]');
   const lightboxImage = document.querySelector('[data-lightbox-image]');
