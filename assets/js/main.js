@@ -2,9 +2,50 @@ const body = document.body;
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
-window.addEventListener('DOMContentLoaded', () => {
-  body.classList.add('page-ready');
-});
+body.classList.add('page-ready');
+
+const initPreloader = () => {
+  const preloader = document.createElement('div');
+  preloader.className = 'site-preloader';
+  preloader.setAttribute('aria-hidden', 'true');
+  preloader.innerHTML = `
+    <div class="preloader-core">
+      <div class="preloader-rings" aria-hidden="true">
+        <span class="preloader-ring"></span>
+        <span class="preloader-ring ring-alt"></span>
+      </div>
+      <p class="preloader-label">Auto Lens</p>
+    </div>
+  `;
+
+  body.appendChild(preloader);
+  body.classList.add('preloader-lock');
+
+  const startedAt = performance.now();
+  const minVisibleMs = 550;
+
+  const hidePreloader = () => {
+    const elapsed = performance.now() - startedAt;
+    const wait = Math.max(0, minVisibleMs - elapsed);
+
+    window.setTimeout(() => {
+      preloader.classList.add('is-hiding');
+      window.setTimeout(() => {
+        preloader.remove();
+        body.classList.remove('preloader-lock');
+      }, 420);
+    }, wait);
+  };
+
+  if (document.readyState === 'complete') {
+    hidePreloader();
+  } else {
+    window.addEventListener('load', hidePreloader, { once: true });
+    window.setTimeout(hidePreloader, 3000);
+  }
+};
+
+initPreloader();
 
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
