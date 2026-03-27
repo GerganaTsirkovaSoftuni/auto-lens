@@ -1,3 +1,23 @@
+// Back to Top Button
+const backToTopBtn = document.createElement('button');
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.setAttribute('aria-label', 'Върни се горе');
+backToTopBtn.innerHTML = '↑';
+document.body.appendChild(backToTopBtn);
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+const toggleBackToTop = () => {
+  if (window.scrollY > 120) {
+    backToTopBtn.classList.add('visible');
+  } else {
+    backToTopBtn.classList.remove('visible');
+  }
+};
+window.addEventListener('scroll', toggleBackToTop);
+toggleBackToTop();
 const body = document.body;
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');

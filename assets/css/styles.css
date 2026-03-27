@@ -1,3 +1,41 @@
+.service-story-row > article.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  right: 2vw;
+  bottom: 2.5vw;
+  z-index: 1200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #9f7b32, #d7ba7a);
+  color: #1a1306;
+  font-size: 2rem;
+  border: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.back-to-top.visible {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.back-to-top:active {
+  transform: scale(0.96);
+}
 :root {
   --bg: #080a0f;
   --bg-elevated: #11141b;
@@ -515,6 +553,14 @@ h2 {
   display: none;
 }
 
+.inner-page-header[data-page="portfolio"] + .section .gallery-item.is-hidden {
+  display: block;
+}
+
+.inner-page-header[data-page="portfolio"] + .section [data-gallery-more] {
+  display: none;
+}
+
 .gallery-open {
   width: 100%;
   border: 0;
@@ -527,7 +573,7 @@ h2 {
 
 .gallery-open img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: clamp(170px, 18vw, 240px);
   object-fit: cover;
   transition: transform var(--transition), filter var(--transition);
 }
@@ -595,6 +641,13 @@ h2 {
   border-radius: var(--radius);
   border: 1px solid var(--surface-border);
   background: linear-gradient(110deg, rgba(210, 176, 107, 0.16), rgba(15, 18, 25, 0.9));
+}
+
+.cta-box .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .goal-section {
@@ -1450,8 +1503,7 @@ th {
 
   .gallery-open img {
     width: 100%;
-    height: auto;
-    aspect-ratio: auto;
+    height: clamp(160px, 46vw, 230px);
   }
 
   .gallery-item {
@@ -1473,6 +1525,13 @@ th {
 
   .hero-actions .btn {
     width: 100%;
+    text-align: center;
+  }
+
+  .gallery-grid + div .btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
     text-align: center;
   }
 
