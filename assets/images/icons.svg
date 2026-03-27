@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-shine" viewBox="0 0 24 24">
+    <path d="M12 2l1.9 4.7L19 8.6l-4 3.3 1.2 5-4.2-2.7-4.2 2.7 1.2-5-4-3.3 5.1-1.9z" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-camera" viewBox="0 0 24 24">
+    <path d="M8 5l1.4-2h5.2L16 5h3a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h3zm4 12a5 5 0 100-10 5 5 0 000 10zm0-2.2a2.8 2.8 0 110-5.6 2.8 2.8 0 010 5.6z" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-detail" viewBox="0 0 24 24">
+    <path d="M4 4h16v4H4zm0 6h10v4H4zm0 6h16v4H4z" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M20 7L10 17l-6-6 1.8-1.8L10 13.4l8.2-8.2z" fill="currentColor"/>
+  </symbol>
+</svg>

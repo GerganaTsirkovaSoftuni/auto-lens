@@ -1,0 +1,23 @@
+<svg width="280" height="56" viewBox="0 0 280 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Auto Lens</title>
+  <desc id="logoDesc">Лого на Auto Lens със символ на автомобилна линия и обектив.</desc>
+  <defs>
+    <linearGradient id="goldGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2d38f"/>
+      <stop offset="55%" stop-color="#cda85a"/>
+      <stop offset="100%" stop-color="#9f7b32"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <rect x="2" y="2" width="52" height="52" rx="14" fill="#0f1115" stroke="url(#goldGradient)" stroke-width="2"/>
+    <path d="M13 33c5-9 12-13 21-13h8c3 0 6 2 7 5" stroke="url(#goldGradient)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="34" cy="29" r="8.5" stroke="url(#goldGradient)" stroke-width="2"/>
+    <circle cx="34" cy="29" r="3.2" fill="url(#goldGradient)"/>
+    <path d="M18 39h29" stroke="#6f5a2d" stroke-width="2" stroke-linecap="round"/>
+    <g transform="translate(68 11)">
+      <path d="M0 34V0h8v34z" fill="url(#goldGradient)"/>
+      <text x="16" y="15" fill="#f4e2b2" font-family="Manrope, Inter, Poppins, Segoe UI, sans-serif" font-size="20" font-weight="700" letter-spacing="0.8">AUTO</text>
+      <text x="16" y="34" fill="#c7a75d" font-family="Manrope, Inter, Poppins, Segoe UI, sans-serif" font-size="20" font-weight="600" letter-spacing="2">LENS</text>
+    </g>
+  </g>
+</svg>
